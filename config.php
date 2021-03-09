@@ -8,4 +8,4 @@ define("DB_NAME", "dynveo"); // The name of the database you created for this te
 
 // Enter the domain and path to this test
 // e.g. http://localhost/php-test/
-define("ROOT_URL", "http://localhost/dynveo-php-test/");
+define("ROOT_URL", "http://localhost/dynveo-git/dynveo-php-test/");
