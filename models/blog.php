@@ -4,8 +4,31 @@ class BlogModel extends Model
 {
     public function Index()
     {
-        $this->query('SELECT * FROM blog ORDER BY create_date DESC');
+        $this->query('SELECT COUNT(*) as nb FROM blog');
+        $nbBlogsTemp = $this->resultSet();
+        $nbBlogs = $nbBlogsTemp[0]['nb'];
+        $perPage = 5;
+        $nbPage = ceil($nbBlogs/$perPage);
+        
+        if(isset($_GET['page'])) {// && $$_GET['p']>0 && $_GET['p']<=$nbPage) {
+            $currentPage = $_GET['page'];
+            print('oui');
+        }
+        else {
+            $currentPage = 1;
+            print('non');
+            print_r($_GET['page']);
+        }
+        
+        $this->query('SELECT * FROM blog ORDER BY create_date DESC LIMIT '.(($currentPage-1)*$perPage).','.$perPage);
         $rows = $this->resultSet();
+
+        for($i=1;$i<=$nbPage;$i++) {
+            
+                echo " <a href=\"blog?page=$i\">$i</a> /";
+            
+        }
+
         return $rows;
     }
 

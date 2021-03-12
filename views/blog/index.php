@@ -1,6 +1,7 @@
 <div>
     <?php if (isset($_SESSION['is_logged_in'])) : ?>
         <a class="btn btn-success btn-share" href="<?php echo ROOT_URL; ?>blog/add">Add a blog post</a>
+        
     <?php endif; ?>
     <?php foreach ($view_model as $item) : ?>
         <div class="well">
