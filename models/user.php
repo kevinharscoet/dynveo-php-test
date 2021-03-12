@@ -15,7 +15,17 @@ class UserModel extends Model
                 Messages::setMsg('Please complete all fields', 'error');
                 return;
             }
+            
+            $this->query('SELECT * FROM users WHERE email=:email');
+            $this->bind(':email', $post['email']);
 
+            $row = $this->single();
+
+            if ($row){
+                Messages::setMsg('Email already use', 'error');
+                return;
+            }
+                
             // Insert into MySQL
             $this->query('INSERT INTO users(name, email, password) VALUES(:name, :email, :password)');
             $this->bind(':name', $post['name']);
