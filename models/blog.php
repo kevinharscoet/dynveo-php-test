@@ -21,11 +21,12 @@ class BlogModel extends Model
             }
 
             // Insert into MySQL
-            $this->query('INSERT INTO blog(title, body, link, id_user) VALUES(:title, :body, :link, :id_user)');
+            $this->query('INSERT INTO blog(title, body, link, id_user,create_date) VALUES(:title, :body, :link, :id_user, :create_date)');
             $this->bind(':title', $post['title']);
             $this->bind(':body', $post['body']);
             $this->bind(':link', $post['link']);
             $this->bind(':id_user', 1);
+            $this->bind(':create_date', date('Y-m-d'));
             $this->execute();
 
             // Verify
@@ -34,6 +35,6 @@ class BlogModel extends Model
                 header('Location: ' . ROOT_URL . 'blog');
             }
         }
-    }
-
+        return;
+    }   
 }
