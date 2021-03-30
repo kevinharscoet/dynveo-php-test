@@ -10,7 +10,7 @@ class BlogModel extends Model
         $perPage = 5;
         $nbPage = ceil($nbBlogs/$perPage);
         
-        if(isset($_GET['page'])) {// && $$_GET['p']>0 && $_GET['p']<=$nbPage) {
+        if(isset($_GET["page"])) {// && $$_GET['p']>0 && $_GET['p']<=$nbPage) {
             $currentPage = $_GET['page'];
             print('oui');
         }
